@@ -1,0 +1,85 @@
+#header-title {
+  text-align: center;
+}
+
+#memory-board-container {
+  width: 1000px;
+  height: 600px;
+  background-color: #cccccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.card-container {
+  width: 150px;
+  height: 250px;
+  border: 1px #ffffff solid;
+  margin: 10px;
+  position: relative;
+}
+
+.card {
+  border: none;
+  position: absolute;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  width: 100%;
+}
+
+.card-front {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-radius: 6px;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+}
+
+.card-back {
+  background: #eaeaed;
+  color: #0087cc;
+  line-height: 250px;
+  text-align: center;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.flip-card-animation {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
+.java {
+  background-image: url("../images/java.png");
+}
+
+.php {
+  background-image: url("../images/php.png");
+}
+
+.ruby {
+  background-image: url("../images/ruby.png");
+}
+
+.search {
+  background-image: url("../images/search.png");
+}
+
+.sharp {
+  background-image: url("../images/sharp.png");
+}
+/*# sourceMappingURL=style.css.map */
