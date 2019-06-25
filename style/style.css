@@ -63,6 +63,11 @@
           transform: rotateY(-180deg);
 }
 
+.flip-card-animation2 {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
 .java {
   background-image: url("../images/java.png");
 }
