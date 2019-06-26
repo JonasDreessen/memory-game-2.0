@@ -45,19 +45,16 @@ function moveCounter() {
     movesID.innerHTML = amountOfMoves;
 }
 
+// if there is a match it will leave the cards turned. 
 function match() {
-    /*openedCards[0].classList.remove("card");
-     openedCards[1].classList.remove("card");
-     */
     openedCards[0].classList.add("flip-card-animation2");
     openedCards[1].classList.add("flip-card-animation2");
     openedCards[0].classList.remove("flip-card-animation");
     openedCards[1].classList.remove("flip-card-animation");
 
     openedCards.length = 0;
-
 }
-
+// If there is no match the card will return back to the front ? 
 function noMatch() {
     let flipCardAnimation = document.querySelectorAll(".flip-card-animation");
 
@@ -82,3 +79,27 @@ function stopEventListener() {
     setTimeout(startEventListener, 600);
 
 };
+
+
+// Count up clock
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+
+var timerInterval = setInterval(setTime, 1000);
+timerInterval;
+
+function setTime() {
+    ++totalSeconds;
+    secondsLabel.innerHTML = pad(totalSeconds % 60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+    var valString = val + "";
+    if (valString.length < 2) {
+        return "0" + valString;
+    } else {
+        return valString;
+    }
+}

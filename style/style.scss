@@ -21,12 +21,10 @@ body{
     padding-right: 10px;
 }
 .score-board{
-
     font-size: 1.5em;
     display: inline-block;
     padding: 20px 50px;
     border: 2px solid #cccccc;
-
 }
 
 
@@ -39,6 +37,7 @@ body{
     margin-right: auto;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-top: 20px;
 
 }
 
@@ -68,6 +67,10 @@ body{
     overflow: hidden;
     width: 100%;
     -webkit-transform: translateZ(1px);
+    background-image: url("../images/question-sign.png");
+    background-repeat: no-repeat;
+    background-position: center;
+
 
 }
 
