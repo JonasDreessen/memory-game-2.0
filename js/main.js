@@ -1,56 +1,84 @@
-// Get all the elements with class .card [gives an array]
-
+const getCardContainerClass = document.querySelectorAll(".card-container");
 const getCardClass = document.querySelectorAll(".card");
-let firstCard, secondCard;
-var clickCounter = 0;
-var openedCards = [];
+const movesID = document.getElementById("moves");
+const timeSpendID = document.getElementById("time-spend");
+const resetID = document.getElementById("reset");
 var allCardClasses = document.querySelectorAll(".card");
+var clickCounter = 0;
+var amountOfMoves = 0;
+var openedCards = [];
 
+
+function randomPosition() {
+
+    for (var i = 0; i < getCardContainerClass.length; i++) {
+        var target = Math.floor(Math.random() * getCardContainerClass.length + 1)
+        getCardContainerClass[i].style.order = target;
+    }
+}
+randomPosition();
 
 function flipCardToBackSide() {
- // add a class to the clicked class 
+    // add a class to the clicked class 
     this.classList.add("flip-card-animation");
-// push the clicked card in the openendCards array
+    // push the clicked card in the openendCards array
     openedCards.push(this);
-// Create a variable that measures the length of the openedCards array
     var len = openedCards.length;
 
-    if(len == 2){
-// if 2 cards are pushed in the array then activate moveCounter();
+    if (len == 2) {
+
         moveCounter();
-// Compare the 2 data-card values
-        if(openedCards[0].dataset.card === openedCards[1].dataset.card){
-// If values === then activate funtion match();
+
+        if (openedCards[0].dataset.card === openedCards[1].dataset.card) {
+            // If values === then activate funtion match();
             match();
-        } else if(openedCards[0].dataset.card !== openedCards[1].dataset.card){
-// If values !=== then activate function noMatch();
-            noMatch();
+        } else {
+            stopEventListener();
+            setTimeout(noMatch, 400);
         }
     }
 };
 
 
-function moveCounter(){
-    console.log("moveCounter ++");
+function moveCounter() {
+    amountOfMoves++;
+    movesID.innerHTML = amountOfMoves;
 }
 
-function match(){
+function match() {
+    /*openedCards[0].classList.remove("card");
+     openedCards[1].classList.remove("card");
+     */
+    openedCards[0].classList.add("flip-card-animation2");
+    openedCards[1].classList.add("flip-card-animation2");
+    openedCards[0].classList.remove("flip-card-animation");
+    openedCards[1].classList.remove("flip-card-animation");
 
-
-
-}
-function noMatch (){
-    console.log("hello")
-    var flipCardAnimation = document.querySelectorAll(".flip-card-animation");
-    console.log(flipCardAnimation[0]);
-    console.log(flipCardAnimation[1]);
-
-    flipCardAnimation[0].classList.remove("flip-card-animation");
-    flipCardAnimation[1].classList.remove("flip-card-animation");
     openedCards.length = 0;
 
 }
 
-    
+function noMatch() {
+    let flipCardAnimation = document.querySelectorAll(".flip-card-animation");
+
+    flipCardAnimation[0].classList.remove("flip-card-animation");
+    flipCardAnimation[1].classList.remove("flip-card-animation");
+    openedCards.length = 0;
+    stopEventListener();
+}
+
+
 // this gives each element in the array getCardClass an eventListener
-getCardClass.forEach(getCardClass => getCardClass.addEventListener("click", flipCardToBackSide));
+function startEventListener() {
+
+    getCardClass.forEach(getCardClass => getCardClass.addEventListener("click", flipCardToBackSide));
+};
+startEventListener();
+
+// this stop the eventlistener for 600 miliseconds. 
+function stopEventListener() {
+
+    getCardClass.forEach(getCardClass => getCardClass.removeEventListener("click", flipCardToBackSide));
+    setTimeout(startEventListener, 600);
+
+};
