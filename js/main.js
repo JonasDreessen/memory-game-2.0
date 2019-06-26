@@ -22,7 +22,7 @@ function flipCardToBackSide() {
         if(openedCards[0].dataset.card === openedCards[1].dataset.card){
 // If values === then activate funtion match();
             match();
-        } else{
+        } else if(openedCards[0].dataset.card !== openedCards[1].dataset.card){
 // If values !=== then activate function noMatch();
             noMatch();
         }
@@ -30,19 +30,27 @@ function flipCardToBackSide() {
 };
 
 
-
-
-
 function moveCounter(){
     console.log("moveCounter ++");
 }
 
 function match(){
-    console.log("match");
+
+
+
+}
+function noMatch (){
+    console.log("hello")
+    var flipCardAnimation = document.querySelectorAll(".flip-card-animation");
+    console.log(flipCardAnimation[0]);
+    console.log(flipCardAnimation[1]);
+
+    flipCardAnimation[0].classList.remove("flip-card-animation");
+    flipCardAnimation[1].classList.remove("flip-card-animation");
+    openedCards.length = 0;
+
 }
 
-function noMatch (){
-    console.log("no match")
-}
+    
 // this gives each element in the array getCardClass an eventListener
 getCardClass.forEach(getCardClass => getCardClass.addEventListener("click", flipCardToBackSide));
