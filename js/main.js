@@ -1,16 +1,25 @@
 const getCardContainerClass = document.querySelectorAll(".card-container");
 const getCardClass = document.querySelectorAll(".card");
 const movesID = document.getElementById("moves");
-const timeSpendID = document.getElementById("time-spend");
-const resetID = document.getElementById("reset");
+const minutesLabel = document.getElementById("minutes");
+const secondsLabel = document.getElementById("seconds");
+const resetLabel = document.getElementById("reset");
 var allCardClasses = document.querySelectorAll(".card");
 var clickCounter = 0;
 var amountOfMoves = 0;
 var openedCards = [];
+var totalSeconds = 0;
 
 
+
+resetLabel.addEventListener("click",function(){
+    window.location.reload();
+});
+
+
+
+// Generate a random position for the cards. 
 function randomPosition() {
-
     for (var i = 0; i < getCardContainerClass.length; i++) {
         var target = Math.floor(Math.random() * getCardContainerClass.length + 1)
         getCardContainerClass[i].style.order = target;
@@ -26,7 +35,7 @@ function flipCardToBackSide() {
     var len = openedCards.length;
 
     if (len == 2) {
-
+        // every 2 clicks on the cards will activate the moveCounter 
         moveCounter();
 
         if (openedCards[0].dataset.card === openedCards[1].dataset.card) {
@@ -39,7 +48,7 @@ function flipCardToBackSide() {
     }
 };
 
-
+// the counter will go up by one 
 function moveCounter() {
     amountOfMoves++;
     movesID.innerHTML = amountOfMoves;
@@ -82,9 +91,7 @@ function stopEventListener() {
 
 
 // Count up clock
-var minutesLabel = document.getElementById("minutes");
-var secondsLabel = document.getElementById("seconds");
-var totalSeconds = 0;
+
 
 var timerInterval = setInterval(setTime, 1000);
 timerInterval;

@@ -4,16 +4,21 @@
 
 body {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background-image: -webkit-gradient(linear, right top, left bottom, from(#2c0f55), color-stop(#002258), color-stop(#002b4f), color-stop(#002f42), to(#203136));
+  background-image: linear-gradient(to left bottom, #2c0f55, #002258, #002b4f, #002f42, #203136);
+  background-size: cover;
 }
 
 #header-title {
   text-align: center;
+  color: #ffffff;
 }
 
 .score-board-container {
   text-align: center;
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .score-board-text {
@@ -28,10 +33,14 @@ body {
   border: 2px solid #cccccc;
 }
 
+#reset {
+  cursor: pointer;
+}
+
 #memory-board-container {
   width: 1000px;
   height: 600px;
-  background-color: #cccccc;
+  background-color: transparent;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -47,7 +56,6 @@ body {
 .card-container {
   width: 150px;
   height: 250px;
-  border: 1px #ffffff solid;
   margin: 10px;
   position: relative;
 }
@@ -67,11 +75,11 @@ body {
 .card-front {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  border-radius: 6px;
   height: 100%;
   position: absolute;
   overflow: hidden;
   width: 100%;
+  background-color: #cccccc;
   -webkit-transform: translateZ(1px);
   background-image: url("../images/question-sign.png");
   background-repeat: no-repeat;
@@ -117,21 +125,26 @@ body {
 
 .java {
   background-image: url("../images/java.png");
+  background-position: center;
 }
 
 .php {
   background-image: url("../images/php.png");
+  background-position: center;
 }
 
 .ruby {
   background-image: url("../images/ruby.png");
+  background-position: center;
 }
 
 .search {
   background-image: url("../images/search.png");
+  background-position: center;
 }
 
 .sharp {
   background-image: url("../images/sharp.png");
+  background-position: center;
 }
 /*# sourceMappingURL=style.css.map */

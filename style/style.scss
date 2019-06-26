@@ -1,37 +1,47 @@
-*{
+* {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
+body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to left bottom, #2c0f55, #002258, #002b4f, #002f42, #203136);
+    background-size: cover;
 
 }
 
 #header-title {
     text-align: center;
+    color: #ffffff;
 }
 
-.score-board-container{
+.score-board-container {
     text-align: center;
     margin-bottom: 20px;
+    color: #ffffff;
 }
-.score-board-text{
+
+.score-board-text {
     padding-left: 10px;
     padding-right: 10px;
 }
-.score-board{
+
+.score-board {
     font-size: 1.5em;
     display: inline-block;
     padding: 20px 50px;
     border: 2px solid #cccccc;
 }
 
+#reset{
+    cursor: pointer;
+}
+
 
 #memory-board-container {
     width: 1000px;
     height: 600px;
-    background-color: #cccccc;
+    background-color: transparent;
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -44,7 +54,6 @@ body{
 .card-container {
     width: 150px;
     height: 250px;
-    border: 1px #ffffff solid;
     margin: 10px;
     position: relative;
 }
@@ -57,15 +66,16 @@ body{
     transform-style: preserve-3d;
     transition: all 0.5s;
     width: 100%;
+    
 }
 
 .card-front {
     backface-visibility: hidden;
-    border-radius: 6px;
     height: 100%;
     position: absolute;
     overflow: hidden;
     width: 100%;
+    background-color: #cccccc;
     -webkit-transform: translateZ(1px);
     background-image: url("../images/question-sign.png");
     background-repeat: no-repeat;
@@ -84,7 +94,7 @@ body{
     background-size: contain;
     background-repeat: no-repeat;
     -webkit-transform: rotateY(-180deg) translateZ(1px);
-    
+
 
 }
 
@@ -115,20 +125,25 @@ body{
 
 .java {
     background-image: url("../images/java.png");
+    background-position: center;
 }
 
 .php {
     background-image: url("../images/php.png");
+    background-position: center;
 }
 
 .ruby {
     background-image: url("../images/ruby.png");
+    background-position: center;
 }
 
 .search {
     background-image: url("../images/search.png");
+    background-position: center;
 }
 
 .sharp {
     background-image: url("../images/sharp.png");
+    background-position: center;
 }
