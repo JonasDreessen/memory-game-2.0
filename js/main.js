@@ -3,29 +3,29 @@
 const getCardClass = document.querySelectorAll(".card");
 let firstCard, secondCard;
 var clickCounter = 0;
+var openedCards = [];
+var allCardClasses = document.querySelectorAll(".card");
+
 
 function flipCardToBackSide() {
-    // Add the class to flip the card so the bgpicture is visible.
-    /* TRYOUT 
+ // add a class to the clicked class 
     this.classList.add("flip-card-animation");
-    var clickedCards = document.querySelectorAll(".flip-card-animation"); */
+// push the clicked card in the openendCards array
+    openedCards.push(this);
+// Create a variable that measures the length of the openedCards array
+    var len = openedCards.length;
 
-    clickCounter++;
-
-    if (clickCounter === 1) {
-        this.classList.add("flip-card-animation");
-        var clickedCards = document.querySelectorAll(".flip-card-animation");
-
-        // Here It will get the second class of the second child of the .flip-card-animation class.
-
-        clickedCards.forEach(card => console.log(card.children[1].classList[1]));
-
-    } else if (clickCounter === 2) {
-        this.classList.add("flip-card-animation2");
-        var clickedCards2 = document.querySelectorAll(".flip-card-animation2");
-        
-        clickedCards2.forEach(card2 => console.log(card2.children[1].classList[1]));
-        clickCounter = 0;
+    if(len == 2){
+// if 2 cards are pushed in the array then activate moveCounter();
+        moveCounter();
+// Compare the 2 data-card values
+        if(openedCards[0].dataset.card === openedCards[1].dataset.card){
+// If values === then activate funtion match();
+            match();
+        } else{
+// If values !=== then activate function noMatch();
+            noMatch();
+        }
     }
 };
 
@@ -33,5 +33,16 @@ function flipCardToBackSide() {
 
 
 
+function moveCounter(){
+    console.log("moveCounter ++");
+}
+
+function match(){
+    console.log("match");
+}
+
+function noMatch (){
+    console.log("no match")
+}
 // this gives each element in the array getCardClass an eventListener
 getCardClass.forEach(getCardClass => getCardClass.addEventListener("click", flipCardToBackSide));
