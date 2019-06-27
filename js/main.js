@@ -16,7 +16,7 @@ function randomPosition() {
         var target = Math.floor(Math.random() * getCardContainerClass.length + 1)
         getCardContainerClass[i].style.order = target;
     }
-} 
+}
 randomPosition();
 
 
@@ -30,13 +30,19 @@ function startEventListener() {
 };
 startEventListener();
 
-
-
-
+// start timer the timer
+function startTimer(){
+    setInterval(setTime, 1000);
+}
 
 
 
 function flipCardToBackSide() {
+    clickCounter ++;
+    // start the timer on the first click
+    if (clickCounter === 1){
+        startTimer();
+    }
     // add a class to the clicked class so it will flip
     this.classList.add("flip-card-animation");
     // push the clicked card in the openendCards array
@@ -62,15 +68,11 @@ function flipCardToBackSide() {
 
 
 
-
-
 // the counter will go up by one 
 function moveCounter() {
     amountOfMoves++;
     movesID.innerHTML = amountOfMoves;
 }
-
-
 
 
 
@@ -86,8 +88,6 @@ function match() {
 
 
 
-
-
 // If there is no match the card will return back to the front 
 function noMatch() {
     let flipCardAnimation = document.querySelectorAll(".flip-card-animation");
@@ -100,10 +100,6 @@ function noMatch() {
 }
 
 
-
-
-
-
 // this stop the eventlistener for 600 miliseconds. 
 function stopEventListener() {
 
@@ -114,18 +110,22 @@ function stopEventListener() {
 
 
 
-
-
-
-// create a var for the setInterval so it can be stopped when won
-var timerInterval = setInterval(setTime, 1000);
-timerInterval;
-
 // Count up clock
 function setTime() {
     ++totalSeconds;
     secondsLabel.innerHTML = pad(totalSeconds % 60);
     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+
+
+    if (totalSeconds > 10) {
+        document.getElementById("star-one").style.display = "none";
+    }
+    if (totalSeconds > 18) {
+        document.getElementById("star-two").style.display = "none";
+    }
+    if (totalSeconds > 25) {
+        document.getElementById("star-three").style.display = "none";
+    }
 }
 
 function pad(val) {
@@ -138,13 +138,13 @@ function pad(val) {
 }
 
 // Function that gives the winning message when all cards are turned.
-function winningGame(){
+function winningGame() {
     var flipCardAnimation2 = document.querySelectorAll(".flip-card-animation2");
 
 
-    if (flipCardAnimation2.length === getCardClass.length){
+    if (flipCardAnimation2.length === getCardClass.length) {
         document.querySelector(".winning-screen").style.display = 'block';
-        clearInterval(timerInterval);
+        // clearInterval(startTimer);
 
     } else {
         return;
@@ -152,8 +152,6 @@ function winningGame(){
 }
 
 // Reset the game. 
-resetLabel.addEventListener("click",function(){
+resetLabel.addEventListener("click", function () {
     window.location.reload();
 });
-
-
