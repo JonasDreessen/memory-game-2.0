@@ -10,25 +10,34 @@ var amountOfMoves = 0;
 var openedCards = [];
 var totalSeconds = 0;
 
-
-
-resetLabel.addEventListener("click",function(){
-    window.location.reload();
-});
-
-
-
 // Generate a random position for the cards. 
 function randomPosition() {
     for (var i = 0; i < getCardContainerClass.length; i++) {
         var target = Math.floor(Math.random() * getCardContainerClass.length + 1)
         getCardContainerClass[i].style.order = target;
     }
-}
+} 
 randomPosition();
 
+
+
+
+
+
+// this gives each element in the array getCardClass an eventListener
+function startEventListener() {
+    getCardClass.forEach(getCardClass => getCardClass.addEventListener("click", flipCardToBackSide));
+};
+startEventListener();
+
+
+
+
+
+
+
 function flipCardToBackSide() {
-    // add a class to the clicked class 
+    // add a class to the clicked class so it will flip
     this.classList.add("flip-card-animation");
     // push the clicked card in the openendCards array
     openedCards.push(this);
@@ -42,6 +51,7 @@ function flipCardToBackSide() {
             // If values === then activate funtion match();
             match();
         } else {
+            // prevent that other cards can be clicked. 
             stopEventListener();
             setTimeout(noMatch, 400);
         }
@@ -49,11 +59,20 @@ function flipCardToBackSide() {
     winningGame();
 };
 
+
+
+
+
+
 // the counter will go up by one 
 function moveCounter() {
     amountOfMoves++;
     movesID.innerHTML = amountOfMoves;
 }
+
+
+
+
 
 // if there is a match it will leave the cards turned. 
 function match() {
@@ -61,26 +80,29 @@ function match() {
     openedCards[1].classList.add("flip-card-animation2");
     openedCards[0].classList.remove("flip-card-animation");
     openedCards[1].classList.remove("flip-card-animation");
-
+    // clear the openedCards array
     openedCards.length = 0;
 }
-// If there is no match the card will return back to the front ? 
+
+
+
+
+
+// If there is no match the card will return back to the front 
 function noMatch() {
     let flipCardAnimation = document.querySelectorAll(".flip-card-animation");
 
     flipCardAnimation[0].classList.remove("flip-card-animation");
     flipCardAnimation[1].classList.remove("flip-card-animation");
     openedCards.length = 0;
+    // prevent Cards from being clicked while turning.
     stopEventListener();
 }
 
 
-// this gives each element in the array getCardClass an eventListener
-function startEventListener() {
 
-    getCardClass.forEach(getCardClass => getCardClass.addEventListener("click", flipCardToBackSide));
-};
-startEventListener();
+
+
 
 // this stop the eventlistener for 600 miliseconds. 
 function stopEventListener() {
@@ -90,11 +112,16 @@ function stopEventListener() {
 };
 
 
-// Count up clock
-// create a var for the intervalID so it can be stopped when won
+
+
+
+
+
+// create a var for the setInterval so it can be stopped when won
 var timerInterval = setInterval(setTime, 1000);
 timerInterval;
 
+// Count up clock
 function setTime() {
     ++totalSeconds;
     secondsLabel.innerHTML = pad(totalSeconds % 60);
@@ -124,7 +151,9 @@ function winningGame(){
     }
 }
 
-
-
+// Reset the game. 
+resetLabel.addEventListener("click",function(){
+    window.location.reload();
+});
 
 
