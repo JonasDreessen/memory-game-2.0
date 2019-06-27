@@ -9,6 +9,7 @@ var clickCounter = 0;
 var amountOfMoves = 0;
 var openedCards = [];
 var totalSeconds = 0;
+var startIntervalTimer;
 
 // Generate a random position for the cards. 
 function randomPosition() {
@@ -32,9 +33,8 @@ startEventListener();
 
 // start timer the timer
 function startTimer(){
-    setInterval(setTime, 1000);
+    startIntervalTimer = setInterval(setTime, 1000);
 }
-
 
 
 function flipCardToBackSide() {
@@ -43,6 +43,7 @@ function flipCardToBackSide() {
     if (clickCounter === 1){
         startTimer();
     }
+
     // add a class to the clicked class so it will flip
     this.classList.add("flip-card-animation");
     // push the clicked card in the openendCards array
@@ -145,6 +146,7 @@ function winningGame() {
     if (flipCardAnimation2.length === getCardClass.length) {
         document.querySelector(".winning-screen").style.display = 'block';
         // clearInterval(startTimer);
+        clearInterval(startIntervalTimer);
 
     } else {
         return;
