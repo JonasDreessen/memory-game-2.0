@@ -70,6 +70,7 @@ body {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   width: 100%;
+  cursor: pointer;
 }
 
 .card-front {
@@ -80,7 +81,6 @@ body {
   overflow: hidden;
   width: 100%;
   background-color: #cccccc;
-  -webkit-transform: translateZ(1px);
   background-image: url("../images/question-sign.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -146,5 +146,22 @@ body {
 .sharp {
   background-image: url("../images/sharp.png");
   background-position: center;
+}
+
+.winning-screen {
+  position: absolute;
+  z-index: 1;
+  padding-top: 20px;
+  display: none;
+}
+
+.winning-screen span {
+  color: green;
+  display: block;
+  text-align: center;
+  display: block;
+  font-size: 3em;
+  font-weight: bold;
+  letter-spacing: 0.09em;
 }
 /*# sourceMappingURL=style.css.map */

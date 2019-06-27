@@ -46,6 +46,7 @@ function flipCardToBackSide() {
             setTimeout(noMatch, 400);
         }
     }
+    winningGame();
 };
 
 // the counter will go up by one 
@@ -86,13 +87,11 @@ function stopEventListener() {
 
     getCardClass.forEach(getCardClass => getCardClass.removeEventListener("click", flipCardToBackSide));
     setTimeout(startEventListener, 600);
-
 };
 
 
 // Count up clock
-
-
+// create a var for the intervalID so it can be stopped when won
 var timerInterval = setInterval(setTime, 1000);
 timerInterval;
 
@@ -110,3 +109,22 @@ function pad(val) {
         return valString;
     }
 }
+
+// Function that gives the winning message when all cards are turned.
+function winningGame(){
+    var flipCardAnimation2 = document.querySelectorAll(".flip-card-animation2");
+
+
+    if (flipCardAnimation2.length === getCardClass.length){
+        document.querySelector(".winning-screen").style.display = 'block';
+        clearInterval(timerInterval);
+
+    } else {
+        return;
+    }
+}
+
+
+
+
+
